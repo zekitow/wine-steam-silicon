@@ -1,0 +1,7 @@
+# Local Wine bottle + downloads (large / regenerable)
+/vendor/
+/prefixes/
+/downloads/
+/logs/
+.DS_Store
+*.log
