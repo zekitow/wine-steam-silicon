@@ -285,6 +285,7 @@ WINE_VERSION=11.16 ./bin/bootstrap-wine.sh
 - This stack is **Gcenx Wine + WineD3D** (plus MoltenVK for some paths). It is **free** and DIY.
 - Reports of “great” TF2 FPS on Mac usually used **Whisky / CrossOver Wine + DXVK Async**, not stock Gcenx WineD3D.
 - Here, TF2 is often **playable but soft**, especially when looking around on **macOS 26** (hidden-cursor / frame sync quirk).
+- Prefer the Mac’s **built-in laptop screen** over an external monitor — it works best that way.
 - Do **not** drop upstream DXVK `d3d9.dll` into the TF2 folder on this setup unless you know Vulkan adapters work — it previously crashed with `DXVK: No adapters found`.
 
 If you need smoother gameplay: **CrossOver** trial, or **Silo / Highball** (GPTK / DXMT).
