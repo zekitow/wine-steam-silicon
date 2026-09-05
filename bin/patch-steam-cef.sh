@@ -4,6 +4,7 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+export WINE_SILICON_ROOT="$ROOT"
 # shellcheck source=env.sh
 source "$ROOT/bin/env.sh"
 

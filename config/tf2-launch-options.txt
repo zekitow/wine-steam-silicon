@@ -1,0 +1,4 @@
+# Put these in Steam → TF2 → Properties → Launch Options
+# (./bin/tf2.sh does not append launch options.)
+-novid -nojoy -nosteamcontroller -nohltv -particles 1 -noforcemaccel -noforcemspd
+# Do not use -threads. Set resolution/fullscreen in-game Video options.

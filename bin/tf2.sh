@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 # Launch Team Fortress 2 (Steam AppID 440) via the Wine Steam client.
+# TF2 launch options are NOT appended here — set them in Steam:
+#   Library → Team Fortress 2 → Properties → Launch Options
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+export WINE_SILICON_ROOT="$ROOT"
 # shellcheck source=env.sh
 source "$ROOT/bin/env.sh"
 
@@ -16,19 +19,17 @@ fi
 
 "$ROOT/bin/patch-steam-cef.sh"
 
-# TF2 launch options that often help under Wine on Apple Silicon:
-#   -dxlevel 90 / -dxlevel 81  force older DX paths if DX9 fails
-#   -novid                    skip intro videos
-#   -windowed -w 1920 -h 1080 for easier alt-tab / first-run debugging
-TF2_OPTS="${TF2_OPTS:--novid}"
+# Optional extras only if you explicitly set them (normally leave unset).
+# Example: TF2_OPTS="-vulkan" ./bin/tf2.sh
+TF2_OPTS="${TF2_OPTS:-}"
 
 LOG="$LOG_DIR/tf2-$(date +%Y%m%d-%H%M%S).log"
 echo "Launching Team Fortress 2 (AppID 440) ..."
-echo "Extra opts: $TF2_OPTS $*"
+echo "Steam launch options: set in Steam Properties (this script does not append them)."
+if [[ -n "$TF2_OPTS" ]]; then
+  echo "Extra TF2_OPTS: $TF2_OPTS"
+fi
 echo "Log: $LOG"
-echo
-echo "Note: TF2 must already be installed in this Steam bottle."
-echo "If you only see a black Steam splash, sign in first with ./bin/steam.sh"
 
 exec wine "$STEAM_EXE" \
   -no-cef-sandbox \
